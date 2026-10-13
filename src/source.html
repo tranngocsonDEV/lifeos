@@ -59,26 +59,22 @@
           </a>
           <h1 class="text-3xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">LifeOS</h1>
         </div>
-        <p class="text-gray-400 text-sm md:text-base mt-1">organize your life, prepare for emergencies, and build stability from one simple dashboard.</p>
+        <p class="text-gray-400 text-sm md:text-base mt-1">tổ chức cuộc sống, chuẩn bị cho tình huống khẩn cấp và xây dựng sự ổn định từ một bảng điều khiển đơn giản.</p>
       </div>
       <div class="flex flex-wrap gap-2 items-center">
-        <!-- Share: uses native Web Share API if available -->
-        <button @click="shareApp" class="bg-gray-800 hover:bg-gray-700 text-sm px-3 py-1.5 rounded-full flex items-center gap-1 transition">📤 Share</button>
-        <!-- Donate modal trigger -->
-        <a href="https://michaelsboost.com/donate/" target="_blank" class="bg-rose-900/60 hover:bg-rose-800/70 text-sm px-3 py-1.5 rounded-full flex items-center gap-1 transition">❤️ Donate</a>
-        <!-- Data tools dropdown: JSON backup, CSV budget, TXT notes -->
+        <button @click="shareApp" class="bg-gray-800 hover:bg-gray-700 text-sm px-3 py-1.5 rounded-full flex items-center gap-1 transition">📤 Chia sẻ</button>
+        <a href="https://michaelsboost.com/donate/" target="_blank" class="bg-rose-900/60 hover:bg-rose-800/70 text-sm px-3 py-1.5 rounded-full flex items-center gap-1 transition">❤️ Ủng hộ</a>
         <div class="relative" x-data="{ open: false }">
-          <button @click="open = !open" class="bg-gray-800 hover:bg-gray-700 text-sm px-3 py-1.5 rounded-full flex items-center gap-1">📂 Data tools ▼</button>
+          <button @click="open = !open" class="bg-gray-800 hover:bg-gray-700 text-sm px-3 py-1.5 rounded-full flex items-center gap-1">📂 Công cụ dữ liệu ▼</button>
           <div x-show="open" @click.away="open = false" x-transition class="absolute right-0 mt-2 w-56 bg-gray-800 border border-gray-700 rounded-xl shadow-xl z-20 text-sm">
             <div class="p-2 space-y-1">
-              <!-- Full JSON export/import (entire state) -->
-              <button @click="exportFullJSON" class="w-full text-left px-3 py-1.5 hover:bg-gray-700 rounded">💾 Export all data (.json)</button>
-              <label class="w-full text-left px-3 py-1.5 hover:bg-gray-700 rounded cursor-pointer">📂 Import all data (.json)<input type="file" accept=".json" @change="importFullJSON" class="hidden"></label>
+              <button @click="exportFullJSON" class="w-full text-left px-3 py-1.5 hover:bg-gray-700 rounded">💾 Xuất tất cả dữ liệu (.json)</button>
+              <label class="w-full text-left px-3 py-1.5 hover:bg-gray-700 rounded cursor-pointer">📂 Nhập tất cả dữ liệu (.json)<input type="file" accept=".json" @change="importFullJSON" class="hidden"></label>
               <div class="border-t border-gray-700 my-1"></div>
-              <button @click="exportNotesTxt" class="w-full text-left px-3 py-1.5 hover:bg-gray-700 rounded">📄 Export Notes (.txt)</button>
-              <label class="w-full text-left px-3 py-1.5 hover:bg-gray-700 rounded cursor-pointer">📂 Import Notes (.txt)<input type="file" accept=".txt" @change="importNotesFromFile" class="hidden"></label>
-              <button @click="exportBudgetCSV" class="w-full text-left px-3 py-1.5 hover:bg-gray-700 rounded">📊 Export Budget (.csv)</button>
-              <label class="w-full text-left px-3 py-1.5 hover:bg-gray-700 rounded cursor-pointer">📂 Import Budget (.csv)<input type="file" accept=".csv" @change="importBudgetFromCSV" class="hidden"></label>
+              <button @click="exportNotesTxt" class="w-full text-left px-3 py-1.5 hover:bg-gray-700 rounded">📄 Xuất ghi chú (.txt)</button>
+              <label class="w-full text-left px-3 py-1.5 hover:bg-gray-700 rounded cursor-pointer">📂 Nhập ghi chú (.txt)<input type="file" accept=".txt" @change="importNotesFromFile" class="hidden"></label>
+              <button @click="exportBudgetCSV" class="w-full text-left px-3 py-1.5 hover:bg-gray-700 rounded">📊 Xuất ngân sách (.csv)</button>
+              <label class="w-full text-left px-3 py-1.5 hover:bg-gray-700 rounded cursor-pointer">📂 Nhập ngân sách (.csv)<input type="file" accept=".csv" @change="importBudgetFromCSV" class="hidden"></label>
             </div>
           </div>
         </div>
@@ -86,23 +82,20 @@
     </div>
     <div class="text-xs text-gray-500 mt-2 flex items-center gap-3">
       <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
-      <span>local & private · offline first · open source (MIT)</span>
+      <span>cục bộ & riêng tư · ngoại tuyến trước · mã nguồn mở (MIT)</span>
     </div>
   </div>
 
-  <!-- DASHBOARD: 6 key life signals (computed from state) -->
   <div class="mb-10">
-    <h2 class="text-xl font-semibold border-l-4 border-cyan-500 pl-3 mb-4">📡 Dashboard · vital signals</h2>
+    <h2 class="text-xl font-semibold border-l-4 border-cyan-500 pl-3 mb-4">📡 Bảng điều khiển · tín hiệu quan trọng</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <!-- Money left this week -->
       <div class="bg-gray-800/60 backdrop-blur-sm border border-gray-700 rounded-2xl p-4 shadow-lg card-hover">
-        <div class="flex items-center gap-2 text-cyan-300 text-sm uppercase">💰 Money left (weekly)</div>
+        <div class="flex items-center gap-2 text-cyan-300 text-sm uppercase">💰 Tiền còn lại (hàng tuần)</div>
         <div class="text-3xl font-bold mt-1" x-text="formatMoney(weeklyNet)"></div>
-        <div class="text-xs text-gray-400 mt-1">after essentials & bills</div>
+        <div class="text-xs text-gray-400 mt-1">sau chi phí thiết yếu & hóa đơn</div>
       </div>
-      <!-- Bills coming up -->
       <div class="bg-gray-800/60 border border-gray-700 rounded-2xl p-4 shadow-lg card-hover">
-        <div class="flex items-center gap-2 text-amber-300 text-sm uppercase">📅 Bills coming up</div>
+        <div class="flex items-center gap-2 text-amber-300 text-sm uppercase">📅 Hóa đơn sắp đến</div>
         <div class="mt-1">
           <template x-if="upcomingBills.length">
             <ul class="text-sm space-y-1">
@@ -115,12 +108,11 @@
               </template>
             </ul>
           </template>
-          <p x-if="upcomingBills.length === 0" class="text-gray-400 text-sm">✔ no bills due soon</p>
+          <p x-if="upcomingBills.length === 0" class="text-gray-400 text-sm">✔ không có hóa đơn nào sắp đến</p>
         </div>
       </div>
-      <!-- Food expiring soon -->
       <div class="bg-gray-800/60 border border-gray-700 rounded-2xl p-4 shadow-lg card-hover">
-        <div class="flex items-center gap-2 text-red-300 text-sm uppercase">🍅 Expiring soon</div>
+        <div class="flex items-center gap-2 text-red-300 text-sm uppercase">🍅 Sắp hết hạn</div>
         <div>
           <template x-if="expiringItems.length">
             <ul class="text-sm space-y-1">
@@ -132,12 +124,11 @@
               </template>
             </ul>
           </template>
-          <p x-if="expiringItems.length === 0" class="text-gray-400 text-sm">✓ pantry fresh</p>
+          <p x-if="expiringItems.length === 0" class="text-gray-400 text-sm">✓ kho tàng còn tươi</p>
         </div>
       </div>
-      <!-- Emergency fund progress -->
       <div class="bg-gray-800/60 border border-gray-700 rounded-2xl p-4 shadow-lg card-hover">
-        <div class="flex items-center gap-2 text-emerald-300 text-sm uppercase">🛡️ Emergency fund</div>
+        <div class="flex items-center gap-2 text-emerald-300 text-sm uppercase">🛡️ Quỹ khẩn cấp</div>
         <div class="mt-1">
           <div class="flex justify-between text-sm">
             <span x-text="formatMoney(emergency.current)"></span>
@@ -149,37 +140,31 @@
           <span class="text-xs text-gray-400" x-text="Math.round(emergencyPercent)+'%'"></span>
         </div>
       </div>
-      <!-- Habits checked off today -->
       <div class="bg-gray-800/60 border border-gray-700 rounded-2xl p-4 shadow-lg card-hover">
-        <div class="flex items-center gap-2 text-indigo-300 text-sm uppercase">✅ Habits today</div>
+        <div class="flex items-center gap-2 text-indigo-300 text-sm uppercase">✅ Thói quen hôm nay</div>
         <div class="text-2xl font-bold" x-text="completedHabitsCount + '/' + habitsList.length"></div>
-        <div class="text-xs text-gray-400">stability routines</div>
+        <div class="text-xs text-gray-400">thực hành ổn định</div>
       </div>
-      <!-- Preparedness score -->
       <div class="bg-gray-800/60 border border-gray-700 rounded-2xl p-4 shadow-lg card-hover">
-        <div class="flex items-center gap-2 text-orange-300 text-sm uppercase">⚡ Preparedness score</div>
+        <div class="flex items-center gap-2 text-orange-300 text-sm uppercase">⚡ Điểm sẵn sàng</div>
         <div class="text-2xl font-bold" x-text="prepScore + '%'"></div>
         <div class="w-full bg-gray-700 rounded-full h-2 mt-1">
           <div class="bg-orange-500 h-2 rounded-full" :style="`width: ${prepScore}%`"></div>
         </div>
-        <div class="text-xs text-gray-400 mt-1">emergency readiness</div>
+        <div class="text-xs text-gray-400 mt-1">sẵn sàng ứng phó</div>
       </div>
     </div>
   </div>
 
-  <!-- MAIN GRID: BUDGET / PANTRY / PREP / HABITS / INVENTORY / NOTES -->
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    
-    <!-- BUDGET Section: income, expenses, savings, debt, survival number -->
     <div class="bg-gray-800/40 rounded-2xl border border-gray-700 p-5 shadow-md">
       <div class="flex justify-between items-center flex-wrap mb-3">
-        <h3 class="text-lg font-bold flex items-center gap-2">💰 Budget · cash flow</h3>
-        <span class="text-xs bg-gray-700 px-2 py-1 rounded-full">survival number: <span x-text="formatMoney(survivalNumberWeekly)"></span>/week</span>
+        <h3 class="text-lg font-bold flex items-center gap-2">💰 Ngân sách · dòng tiền</h3>
+        <span class="text-xs bg-gray-700 px-2 py-1 rounded-full">mức sinh tồn: <span x-text="formatMoney(survivalNumberWeekly)"></span>/tuần</span>
       </div>
       
-      <!-- Income list -->
       <div class="mb-4">
-        <h4 class="text-sm font-semibold text-cyan-300">Income</h4>
+        <h4 class="text-sm font-semibold text-cyan-300">Thu nhập</h4>
         <div class="space-y-2 mt-1">
           <template x-for="inc in incomes" :key="inc.id">
             <div class="flex justify-between items-center bg-gray-900/60 p-2 rounded text-sm">
@@ -189,12 +174,11 @@
             </div>
           </template>
         </div>
-        <button @click="addIncomePrompt()" class="text-xs mt-2 bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-full">+ Add income</button>
+        <button @click="addIncomePrompt()" class="text-xs mt-2 bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-full">+ Thêm thu nhập</button>
       </div>
       
-      <!-- Expenses list -->
       <div>
-        <h4 class="text-sm font-semibold text-amber-300">Expenses & bills</h4>
+        <h4 class="text-sm font-semibold text-amber-300">Chi phí & hóa đơn</h4>
         <div class="space-y-2 mt-1">
           <template x-for="exp in expenses" :key="exp.id">
             <div class="bg-gray-900/60 p-2 rounded text-sm">
@@ -204,52 +188,50 @@
                 <button @click="removeExpense(exp.id)" class="text-red-400 text-xs">✖</button>
               </div>
               <div class="flex text-xs text-gray-400 gap-3 mt-1">
-                <span x-if="exp.isBill">📌 Bill</span>
-                <span x-if="exp.dueDate" x-text="'due: '+exp.dueDate"></span>
+                <span x-if="exp.isBill">📌 Hóa đơn</span>
+                <span x-if="exp.dueDate" x-text="'hạn: '+exp.dueDate"></span>
               </div>
             </div>
           </template>
         </div>
-        <button @click="addExpensePrompt()" class="text-xs mt-2 bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-full">+ Add expense / bill</button>
+        <button @click="addExpensePrompt()" class="text-xs mt-2 bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-full">+ Thêm chi phí / hóa đơn</button>
       </div>
       
-      <!-- Debt section with edit controls -->
       <div class="mt-4 border-t border-gray-700 pt-3">
         <div class="flex justify-between items-center flex-wrap gap-2">
-          <div class="text-sm font-semibold text-rose-300 flex items-center gap-1">🎯 Debt payoff</div>
+          <div class="text-sm font-semibold text-rose-300 flex items-center gap-1">🎯 Trả nợ</div>
           <div class="flex gap-1">
-            <button @click="setDebtTotal()" class="text-xs bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded">✏️ Total debt</button>
-            <button @click="setDebtPaid()" class="text-xs bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded">✏️ Paid</button>
+            <button @click="setDebtTotal()" class="text-xs bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded">✏️ Tổng nợ</button>
+            <button @click="setDebtPaid()" class="text-xs bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded">✏️ Đã trả</button>
           </div>
         </div>
         <div class="flex justify-between text-sm mt-1">
-          <span x-text="formatMoney(debtPaid) + ' paid'"></span>
-          <span x-text="'of ' + formatMoney(debtTotal)"></span>
+          <span x-text="formatMoney(debtPaid) + ' đã trả'"></span>
+          <span x-text="'trong tổng ' + formatMoney(debtTotal)"></span>
         </div>
         <div class="w-full bg-gray-700 rounded-full h-2 mt-1">
           <div class="bg-rose-500 h-2 rounded-full" :style="`width: ${debtProgress}%`"></div>
         </div>
         <div class="text-xs text-gray-400 mt-1 flex justify-between">
-          <span>Remaining: <span x-text="formatMoney(debtTotal - debtPaid)"></span></span>
+          <span>Còn lại: <span x-text="formatMoney(debtTotal - debtPaid)"></span></span>
           <span x-text="Math.round(debtProgress)+'%'"></span>
         </div>
       </div>
 
       <div class="grid grid-cols-2 gap-2 mt-3 text-xs">
-        <div>📈 Monthly net: <span x-text="formatMoney(monthlyNetIncome)"></span></div>
-        <div>🎯 Savings: <span x-text="formatMoney(savingsGoal.current)+'/'+formatMoney(savingsGoal.target)"></span></div>
+        <div>📈 Thu nhập ròng hàng tháng: <span x-text="formatMoney(monthlyNetIncome)"></span></div>
+        <div>🎯 Tiết kiệm: <span x-text="formatMoney(savingsGoal.current)+'/'+formatMoney(savingsGoal.target)"></span></div>
       </div>
       <div class="mt-2 flex gap-2 flex-wrap">
-        <button @click="updateSavingsGoal()" class="text-xs bg-gray-700 px-2 py-1 rounded">✏️ Set savings goal</button>
-        <button @click="updateEmergencyFund()" class="text-xs bg-gray-700 px-2 py-1 rounded">✏️ Emergency fund</button>
+        <button @click="updateSavingsGoal()" class="text-xs bg-gray-700 px-2 py-1 rounded">✏️ Đặt mục tiêu tiết kiệm</button>
+        <button @click="updateEmergencyFund()" class="text-xs bg-gray-700 px-2 py-1 rounded">✏️ Quỹ khẩn cấp</button>
       </div>
     </div>
 
-    <!-- PANTRY: food inventory with expiration and calorie tracking -->
     <div class="bg-gray-800/40 rounded-2xl border border-gray-700 p-5 shadow-md">
       <div class="flex justify-between items-center">
-        <h3 class="text-lg font-bold">🥫 Pantry · food inventory</h3>
-        <div class="text-sm bg-gray-800 px-2 py-1 rounded-full">🍽️ Emergency days: <span x-text="emergencyFoodDays"></span> days</div>
+        <h3 class="text-lg font-bold">🥫 Kho thực phẩm · hàng tồn</h3>
+        <div class="text-sm bg-gray-800 px-2 py-1 rounded-full">🍽️ Số ngày dự phòng: <span x-text="emergencyFoodDays"></span> ngày</div>
       </div>
       <div class="max-h-56 overflow-y-auto mt-2 space-y-2">
         <template x-for="item in pantryItems" :key="item.id">
@@ -257,23 +239,22 @@
             <div>
               <span class="font-medium" x-text="item.name"></span>
               <div class="text-xs text-gray-400">
-                <span x-text="item.qty+' units'"></span> · exp: <span x-text="item.expiry"></span> · <span x-text="item.calsPerUnit+' cal/unit'"></span>
+                <span x-text="item.qty+' đơn vị'"></span> · hết hạn: <span x-text="item.expiry"></span> · <span x-text="item.calsPerUnit+' cal/đơn vị'"></span>
               </div>
             </div>
             <button @click="removePantryItem(item.id)" class="text-red-400 text-xs">✖</button>
           </div>
         </template>
-        <p x-if="pantryItems.length === 0" class="text-gray-500 text-sm">➕ add food items to track expiration</p>
+        <p x-if="pantryItems.length === 0" class="text-gray-500 text-sm">➕ thêm thực phẩm để theo dõi hạn sử dụng</p>
       </div>
-      <button @click="addPantryItemPrompt()" class="text-xs mt-3 bg-gray-700 px-3 py-1.5 rounded-full">+ Add canned / dry goods</button>
+      <button @click="addPantryItemPrompt()" class="text-xs mt-3 bg-gray-700 px-3 py-1.5 rounded-full">+ Thêm thực phẩm đóng hộp / khô</button>
       <div x-show="lowStockAlerts.length > 0" class="mt-3 text-xs bg-red-950/50 p-2 rounded border border-red-800">
-        <span class="font-semibold">⚠️ Low stock alert:</span> <span x-text="lowStockAlerts.join(', ')"></span>
+        <span class="font-semibold">⚠️ Cảnh báo tồn kho thấp:</span> <span x-text="lowStockAlerts.join(', ')"></span>
       </div>
     </div>
 
-    <!-- PREP: emergency readiness checklist -->
     <div class="bg-gray-800/40 rounded-2xl border border-gray-700 p-5 shadow-md">
-      <h3 class="text-lg font-bold mb-2">🪖 Emergency prep · readiness</h3>
+      <h3 class="text-lg font-bold mb-2">🪖 Chuẩn bị khẩn cấp · sẵn sàng</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-64 overflow-y-auto">
         <template x-for="task in prepTasks" :key="task.id">
           <label class="flex items-start gap-2 text-sm p-1">
@@ -282,13 +263,12 @@
           </label>
         </template>
       </div>
-      <button @click="addPrepTask()" class="text-xs mt-3 bg-gray-700 px-3 py-1 rounded-full">+ Add readiness task</button>
-      <div class="mt-3 text-xs text-gray-400 border-t border-gray-700 pt-2">🏠 Go-bag · water · power outage · family contact plan</div>
+      <button @click="addPrepTask()" class="text-xs mt-3 bg-gray-700 px-3 py-1 rounded-full">+ Thêm nhiệm vụ sẵn sàng</button>
+      <div class="mt-3 text-xs text-gray-400 border-t border-gray-700 pt-2">🏠 Túi khẩn cấp · nước · mất điện · kế hoạch liên lạc gia đình</div>
     </div>
 
-    <!-- HABITS: daily stability routines -->
     <div class="bg-gray-800/40 rounded-2xl border border-gray-700 p-5 shadow-md">
-      <h3 class="text-lg font-bold mb-2">🌱 Daily stability habits</h3>
+      <h3 class="text-lg font-bold mb-2">🌱 Thói quen ổn định hàng ngày</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
         <template x-for="habit in habitsList" :key="habit.id">
           <label class="flex items-center gap-2 text-sm">
@@ -297,46 +277,43 @@
           </label>
         </template>
       </div>
-      <button @click="resetHabitsToday()" class="text-xs bg-gray-700 px-3 py-1 mt-3 rounded-full">⟳ Reset all habits</button>
+      <button @click="resetHabitsToday()" class="text-xs bg-gray-700 px-3 py-1 mt-3 rounded-full">⟳ Đặt lại tất cả thói quen</button>
     </div>
 
-    <!-- INVENTORY: home gear, documents, survival supplies -->
     <div class="bg-gray-800/40 rounded-2xl border border-gray-700 p-5 shadow-md">
-      <h3 class="text-lg font-bold mb-2">🧰 Home inventory · survival gear</h3>
+      <h3 class="text-lg font-bold mb-2">🧰 Hàng tồn nhà · thiết bị sinh tồn</h3>
       <div class="max-h-56 overflow-y-auto space-y-2">
         <template x-for="item in inventoryItems" :key="item.id">
           <div class="bg-gray-900/60 p-2 rounded text-sm flex justify-between items-start">
             <div>
               <span class="font-medium" x-text="item.name"></span>
               <div class="text-xs text-gray-400">
-                <span x-text="item.category"></span> · status: <span :class="{'text-yellow-300': item.status !== 'good'}" x-text="item.status"></span>
+                <span x-text="item.category"></span> · trạng thái: <span :class="{'text-yellow-300': item.status !== 'tốt'}" x-text="item.status"></span>
               </div>
             </div>
             <button @click="removeInventoryItem(item.id)" class="text-red-400 text-xs">✖</button>
           </div>
         </template>
       </div>
-      <button @click="addInventoryPrompt()" class="text-xs mt-3 bg-gray-700 px-3 py-1.5 rounded-full">+ Add item (tool/doc/supply)</button>
-      <div class="text-xs text-gray-400 mt-2">🏷️ repair · sell · donate · replace</div>
+      <button @click="addInventoryPrompt()" class="text-xs mt-3 bg-gray-700 px-3 py-1.5 rounded-full">+ Thêm vật phẩm (dụng cụ/tài liệu/thiết bị)</button>
+      <div class="text-xs text-gray-400 mt-2">🏷️ sửa · bán · quyên góp · thay mới</div>
     </div>
 
-    <!-- NOTES & PLANS: free text, local import/export -->
     <div class="bg-gray-800/40 rounded-2xl border border-gray-700 p-5 shadow-md">
       <div class="flex justify-between items-center mb-2 flex-wrap gap-2">
-        <h3 class="text-lg font-bold">📓 Notes & emergency plans</h3>
+        <h3 class="text-lg font-bold">📓 Ghi chú & kế hoạch khẩn cấp</h3>
         <div class="flex gap-1">
-          <button @click="exportNotesTxt" class="text-xs bg-gray-700 px-2 py-1 rounded">⬇️ Export .txt</button>
-          <label class="text-xs bg-gray-700 px-2 py-1 rounded cursor-pointer">⬆️ Import .txt<input type="file" accept=".txt" @change="importNotesFromFile" class="hidden"></label>
+          <button @click="exportNotesTxt" class="text-xs bg-gray-700 px-2 py-1 rounded">⬇️ Xuất .txt</button>
+          <label class="text-xs bg-gray-700 px-2 py-1 rounded cursor-pointer">⬆️ Nhập .txt<input type="file" accept=".txt" @change="importNotesFromFile" class="hidden"></label>
         </div>
       </div>
-      <textarea x-model="notesText" @input="saveToLocalStorage" rows="4" class="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 text-sm text-gray-200 placeholder-gray-500 focus:ring-1 focus:ring-cyan-500 resize-y" placeholder="Family contact plan, evacuation routes, goals, ideas, local shelter info..."></textarea>
-      <p class="text-xs text-gray-500 mt-2">🔒 saved locally, never leaves your device</p>
+      <textarea x-model="notesText" @input="saveToLocalStorage" rows="4" class="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 text-sm text-gray-200 placeholder-gray-500 focus:ring-1 focus:ring-cyan-500 resize-y" placeholder="Kế hoạch liên lạc gia đình, lộ trình sơ tán, mục tiêu, ý tưởng, thông tin nơi trú ẩn địa phương..."></textarea>
+      <p class="text-xs text-gray-500 mt-2">🔒 lưu cục bộ, không rời khỏi thiết bị của bạn</p>
     </div>
   </div>
   
-  <!-- FOOTER with donation link -->
   <footer class="text-center text-gray-500 text-xs mt-10 pt-4 border-t border-gray-800/50 flex justify-between items-center flex-wrap gap-2">
-    <span>LifeOS — resilience toolkit. All data stored in your browser. MIT open source.</span>
-    <a href="https://michaelsboost.com/donate/" target="_blank" class="text-rose-400 hover:text-rose-300 hover:underline text-xs">❤️ Support LifeOS</a>
+    <span>LifeOS — bộ công cụ tăng cường độ bền. Mọi dữ liệu được lưu trong trình duyệt. Mã nguồn mở MIT.</span>
+    <a href="https://michaelsboost.com/donate/" target="_blank" class="text-rose-400 hover:text-rose-300 hover:underline text-xs">❤️ Hỗ trợ LifeOS</a>
   </footer>
 </div>
